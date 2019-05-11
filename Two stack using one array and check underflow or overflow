@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include<stdbool.h>
+#define max 20
+int stack[20],top1=-1,top2=max;
+bool overflow();
+bool underflow();
+void push1(int data);
+void push2(int data);
+void print();
+void pop1();
+void pop2();
+int main()
+{
+    push1(1);
+    push1(2);
+    push1(3);
+    push1(4);
+    push2(5);
+    push2(6);
+    print();
+    pop1();
+    print();
+}
+void push1(int data)
+{
+    if (overflow()) printf("stack overflow");
+    else
+    {
+        top1=top1+1;
+        stack[top1]=data;
+    }
+}
+void push2(int data)
+{
+    if (overflow()) printf("stack overflow");
+    else
+    {
+        top2=top2-1;
+        stack[top2]=data;
+    }
+}
+void print()
+{
+    if (underflow()) printf("stack underflow");
+    int i=top1,j=top2;
+    while(i!=-1)
+    {
+        printf("%d ",stack[i]);
+        i--;
+    }
+     while(j!=max)
+    {
+        printf("%d ",stack[j]);
+        j++;
+    }
+    
+    printf("\n\n");
+}
+void pop1()
+{
+    top1=top1-1;
+}
+void pop2()
+{
+    top2=top2+1;
+}
+bool overflow()
+{
+    if (top1==top2) return true;
+    else return false;
+}
+bool underflow()
+{
+    if(top1==-1&&top2==max) return true;
+    else return false;
+}

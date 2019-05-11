@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include<stdbool.h>
+int stack[20],top=-1;
+bool isfull();
+bool isempty();
+bool isempty();
+void push(int data);
+void print();
+void pop();
+int main()
+{
+    int num,binary;
+   printf("Enter the decimaml number;");
+   scanf("%d",&num);
+   while(num!=0)
+   {
+       binary=num%2;
+       num=num/2;
+       push(binary);
+   }
+   printf("binary of number is : ");
+   print();
+}
+void push(int data)
+{
+    if (isfull()) printf("stack is full");
+    else
+    {
+        top=top+1;
+        stack[top]=data;
+    }
+}
+void print()
+{
+   int i=top;
+    while(i!=-1)
+    {
+        printf("%d ",stack[i]);
+        i--;
+    }
+    printf("\n\n");
+}
+void pop()
+{
+    if(isempty()) printf("stack is empty");
+    else top=top-1;
+}
+bool isfull()
+{
+    if (top==20-1) return true;
+    else return false;
+}
+bool isempty()
+{
+    if (top==-1) return true;
+    else return false;
+}
